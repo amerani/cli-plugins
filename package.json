@@ -1,0 +1,19 @@
+{
+  "name": "cli-plugins",
+  "version": "0.0.1",
+  "description": "a plugin system for buidling extensible clis",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "cli",
+    "plugin",
+    "extend"
+  ],
+  "author": "Alek Merani",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

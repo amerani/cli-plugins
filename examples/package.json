@@ -1,0 +1,14 @@
+{
+  "name": "cli-plugins-examples",
+  "version": "0.0.1",
+  "description": "examples for using cli-plugins",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Alek Merani",
+  "license": "MIT",
+  "dependencies": {
+    "cli-plugins": "latest"
+  }
+}

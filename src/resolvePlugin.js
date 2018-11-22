@@ -2,7 +2,11 @@ const parse = require("./parsePlugins");
 const fs = require("fs-jetpack");
 const path = require("path");
 
-async function resolvePlugins ({ prefix, plugins, file }) {
+async function resolvePlugins (args) {
+  if(!args) throw new Error("Plugins cannot be resolved");
+
+  let { prefix, plugins = [], file } = args;
+
   if(plugins) {
     plugins = parse(plugins);
   } 

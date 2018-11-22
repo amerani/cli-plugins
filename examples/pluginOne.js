@@ -1,3 +1,3 @@
-module.exports = function() {
-  console.log("pluginOne.js");
+module.exports = function(options, ...args) {
+  console.log("pluginOne.js", options, args[0]);
 }

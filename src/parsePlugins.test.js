@@ -48,9 +48,3 @@ test('should remove exluded plugins', () => {
     ["two", {2:2}]
   ])
 });
-
-test.skip('should dedup', () => {
-  const plugins = ["one", ["one",{1:1}]];
-  const output = parsePlugins(plugins);
-  expect(output).toEqual([["one", {}]]);
-})

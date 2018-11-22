@@ -15,5 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "fs-jetpack": "^2.2.0"
   }
 }

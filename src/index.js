@@ -1,1 +1,4 @@
-console.log("Under construction");
+module.exports = {
+  resolve: require("./resolvePlugin"),
+  run: require("./runPlugin")
+}

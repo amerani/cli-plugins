@@ -1,7 +1,7 @@
 const cliPlugins = require("cli-plugins");
 
 cliPlugins.resolve({
-  plugins: ["pluginOne"]
+  file: "./.rc"
 })
 .then(plugins => {
   console.log(plugins);

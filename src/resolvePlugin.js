@@ -7,17 +7,18 @@ async function resolvePlugins (args) {
 
   let { prefix, plugins = [], file } = args;
 
-  if(plugins) {
+  if(!file && plugins) {
     plugins = parse(plugins);
   } 
   else {
     const rcPath = path.resolve(process.cwd(), file);
-    if(!fs.existsAsync(rcPath)) {
+    if(!await fs.existsAsync(rcPath)) {
       throw new Error(`File not found ${rcPath}`);
     }
     const rc = await fs.readAsync(rcPath);
     const contents = JSON.parse(rc);
-    plugins = parse(contents);
+    if(contents.prefix) prefix = contents.prefix;
+    plugins = parse(contents.plugins);
   } 
   const pluginMap = {};
   for(let i = 0; i < plugins.length; i++){

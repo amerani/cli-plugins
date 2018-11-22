@@ -1,4 +1,5 @@
 const resolvePlugin = require("./resolvePlugin");
+const fs = require("fs-jetpack");
 
 test('should throw without args', () => {
   return expect(resolvePlugin()).rejects.toThrow();
@@ -9,14 +10,16 @@ test('should return empty array without args', () => {
 });
 
 test('should resolve local fs plugin', async (done) => {
+  await fs.writeAsync("./pluginOne.js", "module.exports = function() { }");
   const plugins = await resolvePlugin({
-    plugins: ["../test-fs/resolvePluginOne"]
+    plugins: ["pluginOne"]
   })
   expect(plugins).toHaveLength(1);
-  expect(plugins[0].name).toBe("../test-fs/resolvePluginOne");
+  expect(plugins[0].name).toBe("pluginOne");
   expect(plugins[0].path).not.toBe(null);
   expect(plugins[0].module).toBeInstanceOf(Function);
   expect(plugins[0].options).not.toBe(null);
   expect(plugins[0].options).toBeInstanceOf(Object);
+  await fs.removeAsync("./pluginOne.js");
   done();
 });

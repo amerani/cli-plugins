@@ -9,7 +9,7 @@
   "author": "Alek Merani",
   "license": "MIT",
   "dependencies": {
-    "cli-plugins": "latest",
-    "cli-plugins-example-hello-world": "latest"
+    "cli-plugins": "*",
+    "cli-plugins-example-hello-world": "*"
   }
 }

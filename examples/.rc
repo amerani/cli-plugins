@@ -1,3 +1,7 @@
 {
-  "plugins": ["pluginOne"]
+  "prefix": "cli-plugins-example",
+  "plugins": [
+    ["localPlugin", {"log": false}],
+    ["hello-world", {"log": true}]
+  ]
 }

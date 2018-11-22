@@ -1,9 +1,9 @@
 const cliPlugins = require("cli-plugins");
 
 cliPlugins.resolve({
-  file: "./.rc"
+  file: ".rc"
 })
-.then(plugins => {
-  console.log(plugins);
+.then(async plugins => {
+  await cliPlugins.run(plugins, "hello", "world");
 })
 

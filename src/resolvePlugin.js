@@ -24,10 +24,15 @@ async function resolvePlugins (args) {
   for(let i = 0; i < plugins.length; i++){
       const plugin = plugins[i];
       const path = await resolvePath(plugin[0], prefix);
+      const module = require(path);
+      const options = plugin[1];
       pluginMap[plugin[0]] = {
           path,
-          module: require(path),
-          options: plugin[1]
+          module,
+          options,
+          async run(...args) {
+            return await module(options, ...args);
+          }
       }
   }
   const names = Object.keys(pluginMap);

@@ -12,7 +12,7 @@ test('should return empty array without args', () => {
 test('should resolve local fs plugin', async (done) => {
   await fs.writeAsync("./pluginOne.js", "module.exports = function() { }");
   const plugins = await resolvePlugin({
-    plugins: ["pluginOne"]
+    plugins: ["pluginOne", "pluginOne"]
   })
   expect(plugins).toHaveLength(1);
   expect(plugins[0].name).toBe("pluginOne");

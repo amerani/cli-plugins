@@ -1,0 +1,12 @@
+{
+  "name": "cli-plugins-example-hello-world",
+  "version": "0.0.0",
+  "description": "example published plugin with prefix",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Alek Merani",
+  "license": "MIT",
+  "private": false
+}

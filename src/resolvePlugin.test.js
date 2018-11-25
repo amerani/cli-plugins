@@ -18,6 +18,7 @@ test('should resolve local fs plugin', async (done) => {
   expect(plugins[0].name).toBe("pluginOne");
   expect(plugins[0].path).not.toBe(null);
   expect(plugins[0].module).toBeInstanceOf(Function);
+  expect(plugins[0].run).toBeInstanceOf(Function);
   expect(plugins[0].options).not.toBe(null);
   expect(plugins[0].options).toBeInstanceOf(Object);
   await fs.removeAsync("./pluginOne.js");
@@ -36,6 +37,7 @@ test('should resolve local fs plugin with config file', async (done) => {
   expect(plugins[0].name).toBe("pluginOne");
   expect(plugins[0].path).not.toBe(null);
   expect(plugins[0].module).toBeInstanceOf(Function);
+  expect(plugins[0].run).toBeInstanceOf(Function);
   expect(plugins[0].options).not.toBe(null);
   expect(plugins[0].options).toBeInstanceOf(Object);
   await fs.removeAsync("./pluginOne.js");

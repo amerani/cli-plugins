@@ -44,9 +44,3 @@ test('should resolve local fs plugin with config file', async (done) => {
   await fs.removeAsync("./.testrc");
   done();
 });
-
-test('should throw when config file not found', () => {
-  return expect(resolvePlugin({
-    file: ".testrc"
-  })).rejects.toThrow();
-})

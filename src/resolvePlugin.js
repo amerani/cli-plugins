@@ -24,14 +24,14 @@ async function resolvePlugins (args) {
   for(let i = 0; i < plugins.length; i++){
       const plugin = plugins[i];
       const path = await resolvePath(plugin[0], prefix);
-      const module = require(path);
+      const pluginModule = require(path);
       const options = plugin[1];
       pluginMap[plugin[0]] = {
           path,
-          module,
+          module: pluginModule,
           options,
           async run(...args) {
-            return await module(options, ...args);
+            return await pluginModule(options, ...args);
           }
       }
   }
@@ -47,8 +47,15 @@ async function resolvePath(plugin, prefix) {
       return local.toString();
   }
   const moduleName = prefix ? `${prefix}-${plugin}` : plugin;
-  const nmPath = path.resolve(process.cwd(), "node_modules", moduleName);
-  return nmPath;
+  const nodeModulesPaths = module.paths;
+  for(let i = 0; i < nodeModulesPaths.length; i++) {
+    const nmPath = path.resolve(nodeModulesPaths[i], moduleName);
+    console.log(nmPath)
+    if(await fs.existsAsync(nmPath)) {
+      return nmPath.toString();
+    }
+  }
+  return path.resolve(process.cwd(), "node_modules", moduleName);
 }
 
 module.exports = resolvePlugins;

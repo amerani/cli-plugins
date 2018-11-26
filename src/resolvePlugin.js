@@ -40,21 +40,29 @@ async function resolvePlugins (args) {
 }
 
 async function resolvePath(plugin, prefix) {
+  //check if plugin exists locally
   const local = path.resolve(process.cwd(), plugin);
   if(await fs.existsAsync(`${local}.js`) || 
      await fs.existsAsync(local)) 
   {
       return local.toString();
   }
+  
+  //apply prefix
   const moduleName = prefix ? `${prefix}-${plugin}` : plugin;
+  
+  //scan all node_modules with module.paths
   const nodeModulesPaths = module.paths;
+
   for(let i = 0; i < nodeModulesPaths.length; i++) {
     const nmPath = path.resolve(nodeModulesPaths[i], moduleName);
-    console.log(nmPath)
     if(await fs.existsAsync(nmPath)) {
       return nmPath.toString();
     }
   }
+
+  //defaults to where the cli command is run
+  //most likely where rc file exists
   return path.resolve(process.cwd(), "node_modules", moduleName);
 }
 

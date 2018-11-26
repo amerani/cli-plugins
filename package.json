@@ -1,6 +1,6 @@
 {
   "name": "cli-plugins",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "a plugin system for building extensible clis",
   "main": "src/index.js",
   "scripts": {
